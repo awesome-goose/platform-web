@@ -1,7 +1,7 @@
 package web
 
 import (
-	"github.com/awesome-goose/framework/contracts"
+	"github.com/awesome-goose/contracts"
 )
 
 type Config struct {
@@ -14,7 +14,6 @@ type Config struct {
 	Host    string
 	Port    int
 	Timeout int
-	Hooks   map[contracts.HookType]contracts.HookFn
 }
 
 type Option func(*Config)
@@ -68,27 +67,5 @@ func WithPort(port int) Option {
 func WithTimeout(timeout int) Option {
 	return func(Config *Config) {
 		Config.Timeout = timeout
-	}
-}
-
-func WithHooks(hooks map[contracts.HookType]contracts.HookFn) Option {
-	return func(Config *Config) {
-		if Config.Hooks == nil {
-			Config.Hooks = make(map[contracts.HookType]contracts.HookFn)
-		}
-
-		for hookType, hookFn := range hooks {
-			Config.Hooks[hookType] = hookFn
-		}
-	}
-}
-
-func WithHook(hookType contracts.HookType, hookFn contracts.HookFn) Option {
-	return func(Config *Config) {
-		if Config.Hooks == nil {
-			Config.Hooks = make(map[contracts.HookType]contracts.HookFn)
-		}
-
-		Config.Hooks[hookType] = hookFn
 	}
 }

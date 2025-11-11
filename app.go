@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/awesome-goose/framework/contracts"
+	"github.com/awesome-goose/contracts"
 )
 
 type App struct {

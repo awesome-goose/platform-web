@@ -1,6 +1,6 @@
 package web
 
-import "github.com/awesome-goose/framework/contracts"
+import "github.com/awesome-goose/contracts"
 
 type Platform struct {
 	config *Config
