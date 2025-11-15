@@ -46,9 +46,14 @@ func WithDescription(description string) Option {
 	}
 }
 
-func WithRoutes(routes contracts.Routes) Option {
+func WithRoutes(routes ...contracts.Routes) Option {
 	return func(Config *Config) {
-		Config.Routes = routes
+		rs := make(contracts.Routes, 0)
+		for _, r := range routes {
+			rs = append(rs, r...)
+		}
+
+		Config.Routes = rs
 	}
 }
 
